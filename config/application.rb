@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
 require 'rails/all'
@@ -15,5 +17,20 @@ module TryoutMiniblog
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    config.time_zone = 'Tokyo'
+    config.i18n.default_locale = :ja
+
+    config.generators do |g|
+      g.template_engine :haml
+      g.jbuilder false
+      g.assets false
+      g.helper false
+      g.integration_tool :rspec
+      g.test_framework :rspec,
+                       routing_specs: false,
+                       view_specs: false
+      g.system_tests false
+    end
   end
 end

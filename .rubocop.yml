@@ -1,0 +1,20 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  Exclude:
+    - db/schema.rb
+    - tmp/**/*
+    - vendor/**/*
+    - bin/**/*
+    - node_modules/**/*
+  TargetRubyVersion: 2.7
+
+################
+# Style #
+################
+# %i が見にくいと思うので、配列記法に統一する
+Style/SymbolArray:
+  EnforcedStyle: brackets
