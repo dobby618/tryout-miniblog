@@ -7,8 +7,8 @@
     - @posts.each do |post|
       .card
         .card-body
-          %h6.card-subtitle.mb-2= nl2br(post.body)
+          %h6.card-subtitle.mb-2= nl2br post.body
           %span.text-muted=l post.created_at
           = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
             %i.fas.fa-trash
-          %span.text-muted= post.user.name
+          %span.text-muted= link_to post.user.name, profile_path(post.user)
