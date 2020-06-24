@@ -1,0 +1,13 @@
+%h1
+  全体タイムライン
+  = link_to new_post_path, class: 'btn btn-primary' do
+    %i.fas.fa-plus
+%table
+  %tbody
+    - @posts.each do |post|
+      .card
+        .card-body
+          %h6.card-subtitle.mb-2= nl2br(post.body)
+          %span.text-muted=l post.created_at
+          = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
+            %i.fas.fa-trash

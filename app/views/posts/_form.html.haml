@@ -1,0 +1,10 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    .alert.alert-danger
+      %ul
+        - @post.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_area :body, class: 'form-control'
+  = f.submit 'Save', class: 'btn btn-primary float-right'
