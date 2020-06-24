@@ -11,3 +11,4 @@
           %span.text-muted=l post.created_at
           = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
             %i.fas.fa-trash
+          %span.text-muted= post.user.name

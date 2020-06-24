@@ -10,6 +10,10 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
+      - if user_signed_in?
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+      .notice= notice
+      .alert= alert
       .row.justify-content-center
         .col-md-8
           = yield

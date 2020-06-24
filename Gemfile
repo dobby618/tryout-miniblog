@@ -70,6 +70,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # 多言語対応
 gem 'rails-i18n'
+# 認証
+gem 'devise'
 
 # -- View --
 # テンプレートエンジン
