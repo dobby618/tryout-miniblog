@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :name, length: { maximum: 20 },
                    format: { with: /\A[a-zA-Z]+\z/ },
                    uniqueness: { case_sensitive: false }
-  validates :url, format: /\A#{URI.regexp(%w[http https])}\z/, allow_blank: true
+  validates :website, format: /\A#{URI.regexp(%w[http https])}\z/, allow_blank: true
 
   def email_required?
     false

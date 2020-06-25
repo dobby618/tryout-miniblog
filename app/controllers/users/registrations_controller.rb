@@ -10,11 +10,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   private
 
   def configure_account_update_params
-    devise_parameter_sanitizer.permit(:account_update, keys: [:profile, :url])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:profile, :website])
   end
 
   def update_resource(resource, params)
     resource.update_without_password(params)
+  end
+
+  def after_sign_up_path_for(_resource)
+    root_url
   end
 
   def after_update_path_for(resource)

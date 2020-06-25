@@ -1,0 +1,11 @@
+%h2 Log in
+
+= form_for(resource, as: resource_name, url: session_path(resource_name), class: 'px-4 py-3') do |f|
+  .form-group
+    = f.label :name
+    = f.text_field :name, autofocus: true, autocomplete: 'name', class: 'form-control'
+  .form-group
+    = f.label :password
+    = f.password_field :password, autocomplete: 'password', class: 'form-control'
+  = f.submit 'Log in', class: 'btn btn-block btn-primary'
+= render 'users/shared/links'

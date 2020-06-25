@@ -10,7 +10,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
 
       ## Profile
       t.string :profile
-      t.text   :url
+      t.text   :website
 
       t.timestamps null: false
     end

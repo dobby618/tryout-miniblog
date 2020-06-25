@@ -1,6 +1,9 @@
 - if current_user == @user
   = link_to '編集', edit_user_registration_path
 
-= @user.name
-= nl2br @user.profile
-= link_to @user.url, @user.url, target: :_blank 
+%ul.list-group.list-group-flush
+  %li.list-group-item= @user.name
+  - if @user.profile
+    %li.list-group-item= nl2br @user.profile
+  - if @user.website
+    %li.list-group-item= link_to @user.website, @user.website, target: :_blank
