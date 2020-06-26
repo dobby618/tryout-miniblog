@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   before_action :set_post, only: [:destroy]
 
   # GET /posts
   def index
-    @posts = Post.order(created_at: :desc)
+    @posts = Post.includes(:user).order(created_at: :desc)
   end
 
   # GET /posts/new
@@ -37,10 +38,10 @@ class PostsController < ApplicationController
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find(params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body).merge(user_id: current_user.id)
   end
 end

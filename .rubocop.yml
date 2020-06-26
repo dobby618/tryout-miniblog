@@ -46,6 +46,10 @@ Style/ClassAndModuleChildren:
   Exclude:
     - config/application.rb
 
+# 空メソッドが 1 行だと見にくいので複数行にする
+Style/EmptyMethod:
+  EnforcedStyle: expanded
+
 ################
 # Layout #
 ################

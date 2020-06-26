@@ -2,6 +2,13 @@ ja:
   activerecord:
     models:
       post: 投稿
+      user: ユーザ
     attributes:
       post:
         body: 投稿内容
+      user:
+        name: ユーザ名
+        password: パスワード
+        password_confirmation: パスワード（確認）
+        profile: プロフィール
+        website: ブログ URL

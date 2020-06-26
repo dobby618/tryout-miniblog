@@ -10,6 +10,16 @@
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     .container
+      = link_to 'TryoutMiniblog', root_path
+      - if user_signed_in?
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete
+        = link_to current_user.name, profile_path(current_user)
+
+      - if notice.present?
+        .alert.alert-info= notice
+      - if alert.present?
+        .alert.alert-danger= alert
+
       .row.justify-content-center
         .col-md-8
           = yield
