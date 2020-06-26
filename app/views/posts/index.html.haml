@@ -11,5 +11,6 @@
           %h6.card-title= link_to post.user.name, profile_path(post.user)
           %h5.card-subtitle.mb-2= nl2br post.body
           %span.text-muted=l post.created_at
-          = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
-            %i.fas.fa-trash
+          - if post.user == current_user
+            = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
+              %i.fas.fa-trash
