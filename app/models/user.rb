@@ -4,7 +4,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :validatable, authentication_keys: [:name]
 
-  has_many :posts, dependent: :destroy
+  has_many :posts,        dependent: :destroy
+  has_many :follows,      dependent: :destroy
+  has_many :follow_users, through: :follows
+  has_many :followeds,    dependent: :destroy, inverse_of: :user,
+                          foreign_key: :follow_user_id, class_name: 'Follow'
+  has_many :followers,    through: :followeds, source: :user
 
   validates :name, length: { maximum: 20 },
                    format: { with: /\A[a-zA-Z]+\z/ },
@@ -13,5 +18,9 @@ class User < ApplicationRecord
 
   def email_required?
     false
+  end
+
+  def followed?(follow_user)
+    !!follows.find_by(follow_user_id: follow_user.id)
   end
 end
