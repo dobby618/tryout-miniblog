@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'posts#index'
   resources :posts, only: [:index, :new, :create, :destroy]
   resources :profile, only: [:show]
+  resource  :follow, only: [:create, :destroy]
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

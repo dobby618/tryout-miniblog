@@ -1,9 +1,31 @@
-- if current_user == @user
+- if @user == current_user
   = link_to '編集', edit_user_registration_path
 
 %ul.list-group.list-group-flush
-  %li.list-group-item= @user.name
+  %li.list-group-item
+    = @user.name
   - if @user.profile
     %li.list-group-item= nl2br @user.profile
   - if @user.website
     %li.list-group-item= link_to @user.website, @user.website, target: :_blank
+
+%hr
+
+- if user_signed_in?
+  %h5 フォロータイムライン
+  - if @posts.empty?
+    フォローしているユーザがいません。フォローしてみよう！
+  - else
+    %table
+      %tbody
+        - @posts.each do |post|
+          .card
+            .card-body
+              %h6.card-title
+                = link_to post.user.name, profile_path(post.user)
+                = link_to 'フォロー外す', follow_path(user_id: post.user), method: :delete, class: 'float-right'
+              %h5.card-subtitle.mb-2= nl2br post.body
+              %span.text-muted=l post.created_at
+              - if post.user == current_user
+                = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
+                  %i.fas.fa-trash
