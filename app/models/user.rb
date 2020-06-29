@@ -21,6 +21,6 @@ class User < ApplicationRecord
   end
 
   def followed?(follow_user)
-    !!follows.find_by(follow_user_id: follow_user.id)
+    !follows.find_by(follow_user_id: follow_user.id).nil?
   end
 end
