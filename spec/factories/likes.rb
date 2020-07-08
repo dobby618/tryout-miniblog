@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 FactoryBot.define do
-  factory :post do
+  factory :like do
     user
-    body { Faker::Name.name }
+    post
   end
 end

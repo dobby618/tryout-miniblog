@@ -1,0 +1,13 @@
+%h2
+  いいねしてるユーザ
+
+= render 'posts/post', post: @post
+   
+%hr
+
+- if @users.empty?
+  「いいね」してるユーザはいません。
+- else
+  %ul
+    - @users.each do |user|
+      %li= link_to user.name, profile_path(user)
