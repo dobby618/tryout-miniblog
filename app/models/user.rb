@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :validatable, authentication_keys: [:name]
 
   has_many :posts,        dependent: :destroy
+  has_many :likes,        dependent: :destroy
   has_many :follows,      dependent: :destroy
   has_many :follow_users, through: :follows
   has_many :followeds,    dependent: :destroy, inverse_of: :user,

@@ -1,0 +1,21 @@
+.card
+  .card-body
+    %h6.card-title
+      = link_to post.user.name, profile_path(post.user)
+      - if current_user.followed?(post.user)
+        = link_to 'フォロー外す', follow_path(user_id: post.user), method: :delete, class: 'float-right'
+      - else
+        = link_to 'フォローする', follow_path(user_id: post.user), method: :post, class: 'float-right'
+    %h5.card-subtitle.mb-2= nl2br post.body
+    %span.text-muted=l post.created_at
+    - if post.user == current_user
+      = link_to post, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
+        %i.fas.fa-trash
+    .float-right
+      - if post.liked?(current_user)
+        = link_to post_like_path(post), method: :delete do
+          %i.fas.fa-heart
+      - else
+        = link_to post_like_path(post), method: :post do
+          %i.far.fa-heart
+      = link_to post.likes.count, post_like_path(post)
