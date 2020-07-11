@@ -18,4 +18,4 @@
       - else
         = link_to post_like_path(post), method: :post do
           %i.far.fa-heart
-      = link_to post.likes.count, post_like_path(post)
+      = link_to post.likes_count, post_like_path(post)

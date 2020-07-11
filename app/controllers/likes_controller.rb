@@ -6,7 +6,7 @@ class LikesController < ApplicationController
   before_action :others_post?, only: [:create]
 
   def show
-    @users = User.where(id: Like.where(post: @post).pluck(:user_id))
+    @users = User.where(id: @post.likes.pluck(:user_id))
   end
 
   def create
