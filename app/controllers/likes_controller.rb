@@ -3,6 +3,7 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!, except: [:show]
   before_action :set_post
+  before_action :others_post?, only: [:create]
 
   def show
     @users = User.where(id: Like.where(post: @post).pluck(:user_id))
@@ -26,5 +27,11 @@ class LikesController < ApplicationController
 
   def set_post
     @post = Post.find(params[:post_id])
+  end
+
+  def others_post?
+    return unless @post.user == current_user
+
+    redirect_back fallback_location: root_url, alert: '自分の投稿には「いいね」できません'
   end
 end
