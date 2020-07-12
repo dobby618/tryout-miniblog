@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AddLikesCountToPost < ActiveRecord::Migration[6.0]
+class AddLikesCountToPosts < ActiveRecord::Migration[6.0]
   def change
     add_column :posts, :likes_count, :integer, null: false, default: 0, after: :user_id
 
