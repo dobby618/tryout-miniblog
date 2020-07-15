@@ -7,4 +7,7 @@
 
   .form-group
     = f.text_area :body, class: 'form-control'
+    = f.file_field :image
+    = f.hidden_field :image_cache
+
   = f.submit 'Save', class: 'btn btn-primary float-right'
