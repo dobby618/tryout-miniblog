@@ -1,0 +1,16 @@
+# https://www.takayasugiyama.com/entry/2020/04/28/074534#GitHub-Action%E3%81%AE%E8%A8%AD%E5%AE%9A%E3%82%92%E3%81%99%E3%82%8B
+name: Static Analysis
+
+on: [push]
+
+jobs:
+  rubocop:
+    runs-on: ubuntu-latest
+    container:
+      image: ruby:2.7.1
+    steps:
+      - uses: actions/checkout@v2 # これがないと bundle でエラーになる。何やってるのか分からない
+      - name: setup bundle
+        run: bundle install
+      - name: run rubocop
+        run: bundle exec rubocop
