@@ -1,7 +1,7 @@
 .card
   .card-body
     %h6.card-title
-      = link_to post.user.name, profile_path(post.user)
+      = link_to post.user.name, profile_path(post.user.name)
       - if current_user&.followed?(post.user)
         = link_to 'フォロー外す', follow_path(user_id: post.user), method: :delete, class: 'float-right'
       - else
