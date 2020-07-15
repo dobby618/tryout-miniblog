@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :new, :create, :destroy] do
     resource :like, only: [:show, :create, :destroy]
   end
-  resources :profile, only: [:show]
+  resources :profile, param: :name, only: [:show]
   resource  :follow, only: [:create, :destroy]
 
   devise_for :users, controllers: {
