@@ -47,8 +47,3 @@ test:
 #   production:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  database: tryout_miniblog_production
-  username: tryout_miniblog
-  password: <%= ENV['TRYOUT_MINIBLOG_DATABASE_PASSWORD'] %>

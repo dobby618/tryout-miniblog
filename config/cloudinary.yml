@@ -1,0 +1,7 @@
+---
+production:
+  cloud_name: <%= ENV['SENDGRID_API_KEY'] %>
+  api_key: <%= ENV['SENDGRID_PASSWORD'] %>
+  api_secret: <%= ENV['SENDGRID_USERNAME'] %>
+  enhance_image_tag: true
+  static_file_support: true
