@@ -1,0 +1,27 @@
+.card
+  .card-body
+    %h6.card-title
+      = link_to article.user.name, profile_path(article.user.name)
+
+      // フォロー
+      - if current_user&.followed?(article.user)
+        = link_to 'フォロー外す', follow_path(user_id: article.user), method: :delete, class: 'float-right'
+      - else
+        = link_to 'フォローする', follow_path(user_id: article.user), method: :article, class: 'float-right'
+
+    %h5.card-subtitle.mb-2= nl2br article.body
+    = image_tag article.image_url(:thum_200x200), width: '100%' if article.image?
+    %span.text-muted=l article.created_at
+
+    // いいね
+    - if article.user == current_user
+      = link_to article, method: :delete, data: { confirm: '消してもいいですか？' }, class: 'text-danger' do
+        %i.fas.fa-trash
+    .float-right
+      - if article.liked?(current_user)
+        = link_to article_like_path(article), method: :delete do
+          %i.fas.fa-heart
+      - else
+        = link_to article_like_path(article), method: :article do
+          %i.far.fa-heart
+      = link_to article.likes_count, article_like_path(article)

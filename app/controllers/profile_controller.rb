@@ -5,8 +5,8 @@ class ProfileController < ApplicationController
   before_action :set_user, only: [:show]
 
   def show
-    @posts = Post.where(user_id: @user.follow_users.pluck(:id))
-                 .includes(:user).order(created_at: :desc)
+    @articles = Article.where(user_id: @user.follow_users.pluck(:id))
+                       .includes(:user).order(created_at: :desc)
   end
 
   private

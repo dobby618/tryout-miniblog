@@ -1,10 +1,10 @@
 ja:
   activerecord:
     models:
-      post: 投稿
+      article: 投稿
       user: ユーザ
     attributes:
-      post:
+      article:
         body: 投稿内容
       user:
         name: ユーザ名

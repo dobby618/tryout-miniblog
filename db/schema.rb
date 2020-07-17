@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_15_203205) do
+ActiveRecord::Schema.define(version: 2020_07_17_221426) do
+
+  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.integer "likes_count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "image"
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
 
   create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
@@ -24,22 +34,12 @@ ActiveRecord::Schema.define(version: 2020_07_15_203205) do
 
   create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.bigint "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
+    t.index ["article_id"], name: "index_likes_on_article_id"
+    t.index ["user_id", "article_id"], name: "index_likes_on_user_id_and_article_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
-  end
-
-  create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.integer "likes_count", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "image"
-    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 2020_07_15_203205) do
     t.index ["name"], name: "index_users_on_name", unique: true
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "follows", "users"
   add_foreign_key "follows", "users", column: "follow_user_id"
-  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "articles"
   add_foreign_key "likes", "users"
-  add_foreign_key "posts", "users"
 end

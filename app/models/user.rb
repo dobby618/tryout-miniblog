@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :validatable, authentication_keys: [:name]
 
-  has_many :posts,        dependent: :destroy
+  has_many :articles,     dependent: :destroy
   has_many :likes,        dependent: :destroy
   has_many :follows,      dependent: :destroy
   has_many :follow_users, through: :follows
