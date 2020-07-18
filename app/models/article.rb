@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Post < ApplicationRecord
+class Article < ApplicationRecord
   mount_uploader :image, ArticleImageUploader
 
   belongs_to :user
