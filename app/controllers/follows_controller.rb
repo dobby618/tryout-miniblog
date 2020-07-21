@@ -6,7 +6,7 @@ class FollowsController < ApplicationController
   def create
     Follow.create(user_id: current_user.id, follow_user_id: params[:user_id]) unless @follow
 
-    redirect_to profile_path(current_user.name)
+    redirect_back fallback_location: root_url
   end
 
   def destroy
