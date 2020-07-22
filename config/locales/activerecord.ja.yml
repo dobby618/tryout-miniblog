@@ -8,6 +8,7 @@ ja:
         body: 投稿内容
       user:
         name: ユーザ名
+        email: メールアドレス
         password: パスワード
         password_confirmation: パスワード（確認）
         profile: プロフィール

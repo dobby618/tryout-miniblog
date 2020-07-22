@@ -20,7 +20,13 @@
       - if notice.present?
         .alert.alert-info= notice
       - if alert.present?
-        .alert.alert-danger= alert
+        .alert.alert-danger
+          - if alert.is_a?(Array)
+            %ul
+              - alert.each do |message|
+                %li= message
+          - else
+            = alert
 
       .row.justify-content-center
         .col-md-8

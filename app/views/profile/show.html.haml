@@ -2,8 +2,7 @@
   = link_to '編集', edit_user_registration_path
 
 %ul.list-group.list-group-flush
-  %li.list-group-item
-    = @user.name
+  %li.list-group-item= @user.name
   - if @user.profile
     %li.list-group-item= nl2br @user.profile
   - if @user.website

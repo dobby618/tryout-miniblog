@@ -1,0 +1,20 @@
+%h2 コメント
+
+= render 'articles/article', article: @article
+
+- if @article.comments.select(&:persisted?).present?
+  %ul.list-group.list-group-flush
+    - @article.comments.includes(:user).select(&:persisted?).each do |comment|
+      %li.list-group-item
+        = nl2br comment.body
+        .float-right= link_to "by #{comment.user.name}", profile_path(comment.user)
+
+- if user_signed_in?
+  = form_for @article.comments.build, url: article_comments_path(@article) do |f|
+    .input-group
+      = f.text_area :body, class: 'form-control', rows: '1'
+      .input-group-append
+        = f.submit 'コメント', class: 'btn btn-outline-secondary'
+- else
+  = link_to 'ログイン', user_session_path
+  するとコメントできるようになります。

@@ -50,6 +50,10 @@ Style/ClassAndModuleChildren:
 Style/EmptyMethod:
   EnforcedStyle: expanded
 
+# if 文を rubocop:disable にすると end の後にコメントを書く必要があるため
+Style/CommentedKeyword:
+  Enabled: false
+
 ################
 # Layout #
 ################
