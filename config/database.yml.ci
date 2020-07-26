@@ -1,8 +1,0 @@
-test:
-  adapter: mysql2
-  encoding: utf8mb4
-  username: root
-  password: password
-  host: localhost
-  database: github_actions_for_rails_test
-  reconnect: false

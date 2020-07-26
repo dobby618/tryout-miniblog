@@ -75,6 +75,8 @@ gem 'devise'
 # 画像アップロード
 gem 'carrierwave', '~> 2.0'
 gem 'cloudinary', group: :production
+# メールの css を inline css に変換する
+gem 'premailer-rails'
 
 # -- View --
 # テンプレートエンジン

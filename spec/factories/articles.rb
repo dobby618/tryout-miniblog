@@ -3,6 +3,6 @@
 FactoryBot.define do
   factory :article do
     user
-    body { Faker::Name.name }
+    body { Faker::String.random }
   end
 end

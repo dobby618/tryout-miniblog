@@ -1,0 +1,7 @@
+%ul.list-group
+  %li.list-group-item.active
+    昨日の「いいね」ランキング！
+  - @articles.each.with_index(1) do |article, index|
+    %li.list-group-item
+      = "#{index}位"
+      = article.body

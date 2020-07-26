@@ -69,6 +69,7 @@ Layout/LineLength:
 Metrics/BlockLength:
   Exclude:
     - config/environments/**/*
+    - spec/**/*
 
 ################
 # Rails #
@@ -82,3 +83,7 @@ Rails/FilePath:
 # 日本語でRspecを記述するので
 RSpec/ContextWording:
   Enabled: false
+
+# デフォルト 3 では少ないので
+RSpec/NestedGroups:
+  Max: 5
