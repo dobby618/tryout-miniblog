@@ -4,6 +4,6 @@ FactoryBot.define do
   factory :comment do
     article
     user
-    body { Faker::Name.name }
+    body { Faker::String.random }
   end
 end

@@ -9,4 +9,10 @@ class ArticleMailer < ApplicationMailer
 
     mail(to: article.user.email, subject: 'コメントが届きました')
   end
+
+  def like_ranking_of_yesterday(to_user, articles)
+    @articles = articles
+
+    mail(to: to_user.email, subject: '昨日の「いいね」ランキング！')
+  end
 end

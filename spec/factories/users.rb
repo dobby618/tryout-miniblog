@@ -5,7 +5,7 @@ FactoryBot.define do
     name { Faker::Alphanumeric.alpha(number: 10) }
     email { Faker::Internet.email }
     password { Faker::Alphanumeric.alpha(number: 10) }
-    profile { Faker::Name.name }
+    profile { Faker::String.random }
     website { Faker::Internet.url }
   end
 end
